@@ -13,13 +13,14 @@ import sys, os
 
 # ACTUAL CODE
 
+# we read the file  C:\Users\dsp14\Solutions\eMart\manage.py and replace environment settings on pre-commit and pre-push
 rel_path = os.path.join(os.getcwd() ,'eMart', 'manage.py')
 #with open(rel_path) as f:
 #    if 'eMart.settings.development' in f.read():
 #        print("##Please change settings environment to production! Aborting commit.")
-#        sys.exit(1)
+#        sys.exit(1) #Aborting commit with non zero integer
 #    else:
-#        sys.exit(0)
+#        sys.exit(0) #Allow commit with zero integer
 
 with open(rel_path) as fi:
     file_content = fi.read()
