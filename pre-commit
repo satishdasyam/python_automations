@@ -1,0 +1,31 @@
+#!/usr/bin/env python
+
+import sys, os
+
+#commit_msg_filepath = sys.argv[1]
+#with open(commit_msg_filepath, 'w') as f:
+#   f.write("# Test adding commit filepath"+commit_msg_filepath)
+#print("args length", len(sys.argv))
+
+
+#cur_path = os.path.dirname(os.path.realpath(__file__))
+#another_cur_path = os.getcwd()
+
+# ACTUAL CODE
+
+rel_path = os.path.join(os.getcwd() ,'eMart', 'manage.py')
+#with open(rel_path) as f:
+#    if 'eMart.settings.development' in f.read():
+#        print("##Please change settings environment to production! Aborting commit.")
+#        sys.exit(1)
+#    else:
+#        sys.exit(0)
+
+with open(rel_path) as fi:
+    file_content = fi.read()
+    if 'eMart.settings.development' in file_content:
+        print('## Changing to production environment in manage.py !')
+        with open(rel_path, 'w') as fo:
+            file_content = file_content.replace("eMart.settings.development", "eMart.settings.production")
+            fo.write(file_content)
+sys.exit(0)
