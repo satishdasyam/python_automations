@@ -6,12 +6,10 @@ downloads_path = os.path.join(Path.home(), "Downloads")
 print(downloads_path)
 dir_list = os.listdir(downloads_path)
 
-extension_types_set = set()
 for file in dir_list:
     file_path = os.path.join(downloads_path, file)
     if os.path.isfile(file_path):
         file_name, file_extension = os.path.splitext(file)
-        extension_types_set.add(file_extension)
         destination_path = ''
         if file_extension == '.pem':
             destination_path = os.path.join(downloads_path, "Certificates")
@@ -35,4 +33,3 @@ for file in dir_list:
             if not os.path.isdir(destination_path):
                 os.mkdir(destination_path)
             shutil.move(file_path, destination_path)
-print(extension_types_set)
