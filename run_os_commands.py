@@ -9,7 +9,11 @@ project_path = "C:\\Users\\satishdasyam\\AndroidStudioProjects\\MyApplication"
 
 # command = '''cd "C:\\Users\\satishdasyam\\AndroidStudioProjects\\MyApplication"; gradlew checkstyle'''
 # command = 'cd'
-commands = ["cd", project_path, "gradlew", "checkstyle"]
-output = subprocess.run(commands, capture_output=True, shell=True).stdout.decode()
 
-print("Output", output)
+def run_command(command: list):
+    output = subprocess.run(command, capture_output=True, shell=True, check=True, cwd=project_path).stdout.decode()
+    print("Output", output)
+
+
+run_command(["gradlew", "checkstyle"])
+#run_command(["gradlew", "test"])
